@@ -9,17 +9,15 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mihaipuiu.youtubelite.R
-import com.mihaipuiu.youtubelite.adapters.YoutubeDataAdapter
+import com.mihaipuiu.youtubelite.adapters.VideosAdapter
+import com.mihaipuiu.youtubelite.models.Video
 import com.mihaipuiu.youtubelite.services.YoutubeService
 import kotlinx.coroutines.*
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
+    lateinit var videos: ArrayList<Video>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,19 +28,23 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        GlobalScope.launch {
-            val youtubeService = YoutubeService()
-            val videos = youtubeService.getMostPopularVideos()
-            //val x = 0
+        videos = Video.createEmptyList()
+        val adapter = VideosAdapter(videos)
+        val rvVideos = root.findViewById<View>(R.id.recyclerview_videos) as RecyclerView
+        rvVideos.adapter = adapter
+        rvVideos.layoutManager = LinearLayoutManager(activity)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val task = async(Dispatchers.IO) {
+                YoutubeService().getMostPopularVideos()
+            }
+
+            val newVideos = task.await()
+            videos.clear()
+            videos.addAll(newVideos)
+
+            adapter.notifyDataSetChanged()
         }
-
-        viewManager = LinearLayoutManager(activity)
-        //viewAdapter = YoutubeDataAdapter(myDataset)
-
-//        recyclerView = root.findViewById<RecyclerView>(R.id.list_home).apply {
-//            layoutManager = viewManager
-//            adapter = viewAdapter
-//        }
 
         return root
     }

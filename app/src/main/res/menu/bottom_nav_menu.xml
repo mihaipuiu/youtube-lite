@@ -12,9 +12,9 @@
         android:title="@string/title_search" />
 
     <item
-        android:id="@+id/navigation_channels"
+        android:id="@+id/navigation_history"
         android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="@string/title_channels" />
+        android:title="@string/title_history" />
 
     <item
         android:id="@+id/navigation_favorites"

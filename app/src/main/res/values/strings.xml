@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">YoutubeLite</string>
     <string name="title_home">Home</string>
+    <string name="title_most_popular_videos">Most Popular Videos</string>
     <string name="title_search">Search</string>
-    <string name="title_channels">Channels</string>
-    <string name="title_favorites">Favorites</string>
     <string name="title_history">History</string>
+    <string name="title_favorites">Favorites</string>
 </resources>

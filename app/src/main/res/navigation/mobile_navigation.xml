@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.mihaipuiu.youtubelite.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_most_popular_videos"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -18,10 +18,10 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_channels"
-        android:name="com.mihaipuiu.youtubelite.ui.channels.ChannelsFragment"
-        android:label="@string/title_channels"
-        tools:layout="@layout/fragment_channels" />
+        android:id="@+id/navigation_history"
+        android:name="com.mihaipuiu.youtubelite.ui.history.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_favorites"

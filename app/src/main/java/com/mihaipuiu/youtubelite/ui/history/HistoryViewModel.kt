@@ -1,13 +1,13 @@
-package com.mihaipuiu.youtubelite.ui.channels
+package com.mihaipuiu.youtubelite.ui.history
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ChannelsViewModel : ViewModel() {
+class HistoryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is channels Fragment"
+        value = "This is history Fragment"
     }
     val text: LiveData<String> = _text
 }

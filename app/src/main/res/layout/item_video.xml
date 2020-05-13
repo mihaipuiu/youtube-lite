@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/video_thumbnail"
+        android:layout_width="85dp"
+        android:layout_height="108dp"
+        android:layout_weight="1"
+        app:srcCompat="?android:attr/listChoiceIndicatorMultiple" />
+
+    <TextView
+        android:id="@+id/video_title_text"
+        android:layout_width="122dp"
+        android:layout_height="108dp"
+        android:layout_weight="1" />
+
+    <ImageButton
+        android:id="@+id/play_video_button"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:src="@android:drawable/ic_media_play"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/add_favorite_button"
+        android:layout_width="43dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:src="@android:drawable/btn_star_big_off"
+        android:textSize="12sp" />
+</LinearLayout>
