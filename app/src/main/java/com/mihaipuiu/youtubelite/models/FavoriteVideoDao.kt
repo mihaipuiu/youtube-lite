@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface FavoriteVideoDao {
     @Query("SELECT * FROM favorites")
-    suspend fun getAll(): ArrayList<FavoriteVideo>
+    suspend fun getAll(): List<FavoriteVideo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun add(video: FavoriteVideo)

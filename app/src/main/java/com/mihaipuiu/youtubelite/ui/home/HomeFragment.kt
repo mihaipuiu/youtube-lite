@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
-        videos = Video.createEmptyList()
+        videos = ArrayList()
         val adapter = VideosAdapter(videos)
         val rvVideos = root.findViewById<View>(R.id.recyclerview_videos) as RecyclerView
         rvVideos.adapter = adapter
