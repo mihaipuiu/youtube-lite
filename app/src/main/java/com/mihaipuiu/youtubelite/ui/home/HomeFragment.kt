@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mihaipuiu.youtubelite.R
-import com.mihaipuiu.youtubelite.adapters.MostPopularVideosAdapter
+import com.mihaipuiu.youtubelite.adapters.VideosAdapter
 import com.mihaipuiu.youtubelite.database.FavoriteVideosDb
 import com.mihaipuiu.youtubelite.models.FavoriteVideo
 import com.mihaipuiu.youtubelite.models.Video
@@ -19,7 +19,7 @@ import kotlinx.coroutines.*
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
-    lateinit var mostPopularVideos: ArrayList<Video>
+    private lateinit var mostPopularVideos: ArrayList<Video>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,15 +33,15 @@ class HomeFragment : Fragment() {
 
         CoroutineScope(Dispatchers.Main).launch {
             val favVideos = db.favoriteVideoDao().getAll()
-            var favoredVideos = mutableMapOf<String, FavoriteVideo>()
+            val favoredVideos = mutableMapOf<String, FavoriteVideo>()
 
             for (i in favVideos.indices) {
-                var video = favVideos.get(i)
+                val video = favVideos.get(i)
                 favoredVideos[video.id] = video
             }
 
             mostPopularVideos = ArrayList()
-            val adapter = MostPopularVideosAdapter(mostPopularVideos, favoredVideos, db)
+            val adapter = VideosAdapter(mostPopularVideos, favoredVideos, db)
             val rvVideos = root.findViewById<View>(R.id.recyclerview_videos) as RecyclerView
             rvVideos.adapter = adapter
             rvVideos.layoutManager = LinearLayoutManager(activity)

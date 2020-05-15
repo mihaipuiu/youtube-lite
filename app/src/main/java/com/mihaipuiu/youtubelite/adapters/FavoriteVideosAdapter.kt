@@ -65,7 +65,7 @@ class FavoriteVideosAdapter(private val mVideos: ArrayList<FavoriteVideo>, priva
                 val task = async(Dispatchers.IO) {
                     val favoriteVideo = FavoriteVideo(video.id, video.title, video.thumbnailUrl)
                     db.favoriteVideoDao().remove(favoriteVideo)
-                    mVideos.removeAt(position)
+                    mVideos.remove(favoriteVideo)
                 }
 
                 task.await()

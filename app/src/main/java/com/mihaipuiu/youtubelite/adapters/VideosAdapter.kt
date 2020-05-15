@@ -19,8 +19,8 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
-class MostPopularVideosAdapter(private val mVideos: List<Video>, private val mFavoredVideos: MutableMap<String, FavoriteVideo>, private val db: FavoriteVideosDb) :
-    RecyclerView.Adapter<MostPopularVideosAdapter.ViewHolder>() {
+class VideosAdapter(private val mVideos: List<Video>, private val mFavoredVideos: MutableMap<String, FavoriteVideo>, private val db: FavoriteVideosDb) :
+    RecyclerView.Adapter<VideosAdapter.ViewHolder>() {
 
     private lateinit var context: Context
 
@@ -31,14 +31,14 @@ class MostPopularVideosAdapter(private val mVideos: List<Video>, private val mFa
         val addToFavoritesButton = itemView.findViewById<ImageButton>(R.id.add_favorite_button)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MostPopularVideosAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideosAdapter.ViewHolder {
         this.context = parent.context
         val inflater = LayoutInflater.from(this.context)
         val contactView = inflater.inflate(R.layout.item_video, parent, false)
         return ViewHolder(contactView)
     }
 
-    override fun onBindViewHolder(viewHolder: MostPopularVideosAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: VideosAdapter.ViewHolder, position: Int) {
         val video: Video = mVideos.get(position)
 
         val imageView = viewHolder.videoThumbnailImageButton
